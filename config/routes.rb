@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products
+  #resources :products
   resources :products, path: '/api/v1/products'
 
   
