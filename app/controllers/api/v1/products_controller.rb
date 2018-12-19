@@ -1,5 +1,8 @@
 
 class Api::V1::ProductsController < ApplicationController
+
+ protect_from_forgery with: :null_session
+ skip_before_action :verify_authenticity_token
   def index
     @products = Product.all
     render :json => @products
@@ -35,11 +38,11 @@ class Api::V1::ProductsController < ApplicationController
 
 
   def destroy
+
     @product = Product.find(params[:id])
     @product.destroy
-​
     head :no_content
-    
+
   end
 
   private
