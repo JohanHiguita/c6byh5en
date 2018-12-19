@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
-  #resources :products
-  resources :products, path: '/api/v1/products'
+  resources :products
 
-  
+
+  namespace :api do
+    namespace :v1 do
+      resources :products
+    end
+  end
+
+  # namespace :api, defaults: { format: :json },
+  # constraints: { subdomain: 'api' }, path: '/'  do
+  #   scope module: :v1 do
+  #     # We are going to list our resources here
+  #     resources :products
+  #   end
+  # end
+
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
